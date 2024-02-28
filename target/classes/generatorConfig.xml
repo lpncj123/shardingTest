@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <properties resource="generator.properties"/>
+    <classPathEntry location="src\main\resources\lib/mysql-connector-java-5.1.37.jar"/>
+
+    <context id="front" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="javaFileEncoding" value="UTF-8"/>
+<!--        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">-->
+<!--            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>-->
+<!--            <property name="caseSensitive" value="true"/>-->
+<!--            <property name="forceAnnotation" value="false"/>-->
+<!--            <property name="beginningDelimiter" value="`"/>-->
+<!--            <property name="endingDelimiter" value="`"/>-->
+<!--        </plugin>-->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${jdbc.driverClass}" connectionURL="${jdbc.url}"
+                        userId="${jdbc.userId}" password="${jdbc.password}"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecgimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="cn.lp.bean" targetProject="src/main/java">
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="cn.lp.dal.mapper" targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="cn.lp.dal.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <!--		<table tableName="t_op_channel" domainObjectName="Channel">-->
+        <!--			<generatedKey column="id" sqlStatement="select LAST_INSERT_ID()" identity="true"/>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_transaction_command" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_transaction_exception" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_transaction_order" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--			<columnOverride column="SRC_ACCOUNT_CLOB" jdbcType="VARCHAR"></columnOverride>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_transaction_req_comd" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_transaction_warning" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+
+        <!--		<table tableName="t_transaction_request" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--			<columnOverride column="REQUEST_CONTENT_CLOB" jdbcType="VARCHAR"></columnOverride>-->
+        <!--		</table>-->
+
+
+        <!--			<table tableName="t_transfer_order" >-->
+        <!--				<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--			</table>-->
+
+
+        <!--		<table tableName="t_loan_account" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_loan_apply" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_loan_asset_pawn" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_loan_bank" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_loan_business_contract" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--<table tableName="t_loan_contract" >
+            <generatedKey column="ID" sqlStatement="Mysql" identity="true"/>
+        </table>-->
+        <!--		<table tableName="t_loan_contract_sign" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_loan_legal_person" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_loan_mer_adjustment" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_loan_natural_person" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_loan_order" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        		<!--<table tableName="t_loan_repayment" >
+        			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>
+        		</table>-->
+        <!--		<table tableName="t_loan_repayment_record" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_loan_sign_log" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--		<table tableName="t_loan_mer_customer" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        <!--<table tableName="t_loan_order" >
+            <generatedKey column="ID" sqlStatement="Mysql" identity="true"/>
+        </table>-->
+        			<!--<table tableName="t_loan_channel_order" >
+        				<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>
+        			</table>-->
+        <!--<table tableName="t_loan_mer_customer" >
+            <generatedKey column="ID" sqlStatement="Mysql" identity="true"/>
+        </table>-->
+        <!--		<table tableName="t_loan_channel_order" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--&lt;!&ndash;		</table>&ndash;&gt;-->
+<!--        		<table tableName="t_loan_order" >-->
+<!--        			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+<!--        		</table>-->
+        <!--		<table tableName="t_loan_car_order" >-->
+        <!--			<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--		</table>-->
+        		<table tableName="t_problem0" >
+        			<generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        		</table>
+
+        <!--				<table tableName="t_loan_bind_card" >-->
+        <!--					<generatedKey column="ID" sqlStatement="Mysql" identity="true"/>-->
+        <!--				</table>-->
+        <!--		<table tableName="t_loan_order_reserved">-->
+        <!--			<generatedKey column="id" sqlStatement="select LAST_INSERT_ID()" identity="true"/>-->
+        <!--		</table>-->
+       <!-- <table tableName="t_loan_repayment_plan">
+            <generatedKey column="id" sqlStatement="select LAST_INSERT_ID()" identity="true"/>
+        </table>-->
+    </context>
+</generatorConfiguration>
