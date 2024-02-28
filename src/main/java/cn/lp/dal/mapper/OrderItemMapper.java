@@ -1,6 +1,7 @@
 package cn.lp.dal.mapper;
 
 import cn.lp.bean.Order;
+import cn.lp.bean.OrderItem;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +14,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @Version: 1.0
  */
 @Mapper
-public interface OrderMapper extends BaseMapper<Order> {
-    Long selfInsert(Order order);
+public interface OrderItemMapper extends BaseMapper<OrderItem> {
+    Long selfInsert(OrderItem orderItem);
 }

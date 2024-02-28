@@ -28,6 +28,22 @@ spring:
             props:
               algorithm-expression: t_problem$->{id % 3}
             type: INLINE
+          t-order-db-inline:
+            props:
+              algorithm-expression: ds$->{id % 2}
+            type: INLINE
+          t-order-table-inline:
+            props:
+              algorithm-expression: t_order$->{id % 3}
+            type: INLINE
+          t-order-item-db-inline:
+            props:
+              algorithm-expression: ds$->{order_id % 2}
+            type: INLINE
+          t-order-item-table-inline:
+            props:
+              algorithm-expression: t_order_item$->{order_id % 3}
+            type: INLINE
         tables:
           t_problem:
             actual-data-nodes: ds$->{0..1}.t_problem$->{0..2}
@@ -42,11 +58,57 @@ spring:
             key-generate-strategy: #  t_problem 表主键 id 生成的策略  https://blog.csdn.net/chinawangfei/article/details/114675854
               column: id  # t_order 表的主键id 需要使用雪花算法
               keyGeneratorName: t-problem-snowflake  # 关键这里修改后 似乎不生效，这是最离谱的，就是默认使用的是雪花算法
+          t_order:
+            actual-data-nodes: ds$->{0..1}.t_order$->{0..2}
+            database-strategy: # 分库策略
+              standard: # 用于单分片键的标准分片场景，（多个列标识区分是复杂情况，将standard换成 complex（即分片列名称，多个列以逗号分隔））
+                sharding-algorithm-name: t-order-db-inline # 名称，在上面使用
+                sharding-column: id # 那个字段传到后面算法中
+            table-strategy: # 分表策略
+              standard:
+                sharding-algorithm-name: t-order-table-inline
+                sharding-column: id # 那个字段传到后面算法中
+            key-generate-strategy: #  t_order 表主键order_id 生成的策略  https://blog.csdn.net/chinawangfei/article/details/114675854
+              column: id  # t_order 表的主键id 需要使用雪花算法
+              keyGeneratorName: t-order-snowflake
+          t_order_item:
+            actual-data-nodes: ds$->{0..1}.t_order_item$->{0..2}
+            database-strategy:
+              standard:
+                sharding-algorithm-name: t-order-item-db-inline
+                sharding-column: order_id
+            table-strategy:
+              standard:
+                sharding-algorithm-name: t-order-item-table-inline
+                sharding-column: order_id
+            key-generate-strategy:
+              column: id
+              keyGeneratorName: t-order-item-snowflake
+          t_user: # 广播表不会对数据进行分片，所以配置分库，分表规则是不会生效的
+            key-generate-strategy:
+              column: id
+              keyGeneratorName: t-user-snowflake
         key-generators:
           t-problem-snowflake:
             type: snowflake
             props:
               worker-id: 1
+          t-order-snowflake:
+            type: snowflake
+            props:
+              worker-id: 1
+          t-order-item-snowflake:
+            type: snowflake
+            props:
+              worker-id: 1
+          t-user-snowflake:
+            type: snowflake
+            props:
+              worker-id: 1
+        binding-tables:
+          - t_order,t_order_item
+        broadcast-tables:
+          - t_user
 server:
   port: 10089
 

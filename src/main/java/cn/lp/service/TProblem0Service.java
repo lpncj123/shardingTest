@@ -2,6 +2,7 @@ package cn.lp.service;
 
 import cn.lp.bean.Problem;
 import cn.lp.bean.TProblem0;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.List;
 
@@ -17,4 +18,10 @@ public interface TProblem0Service {
     List<TProblem0> getTProblemList();
 
     void save(TProblem0 tProblem0);
+
+    Integer count();
+
+    Page<Problem> page(Page<Problem> objectPage);
+
+    Problem getById(Long id);
 }

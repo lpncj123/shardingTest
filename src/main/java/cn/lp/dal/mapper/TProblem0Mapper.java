@@ -3,6 +3,7 @@ package cn.lp.dal.mapper;
 import cn.lp.bean.TProblem0;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 @Mapper
@@ -40,4 +41,6 @@ public interface TProblem0Mapper extends BaseMapper<TProblem0> {
      * @mbg.generated
      */
     int updateByPrimaryKey(TProblem0 record);
+    @Select("select count(*) from t_problem")
+    int count();
 }
